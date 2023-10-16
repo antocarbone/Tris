@@ -9,7 +9,6 @@ public class ComputerPlayer extends Player {
 
     @Override
     public Move makeMove(Board board) {
-        
 
     }
 }
