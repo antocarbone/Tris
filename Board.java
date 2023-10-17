@@ -4,6 +4,17 @@ public class Board {
 
     public Board() {
         this.cells = new char[SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++)
+                cells[i][j] = ' ';
+    }
+
+    public char[][] getCells(){
+        char[][] mat=new char[SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++)
+                mat[i][j] = cells[i][j];
+        return mat;
     }
 
     public void print() {

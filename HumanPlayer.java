@@ -16,24 +16,20 @@ public class HumanPlayer extends Player {
                 System.out.println("\nEnter a row: ");
                 row = scanner.nextInt();
                 System.out.println("\nInsert row is: " + row);
+
                 System.out.println("\nEnter a column: ");
                 col = scanner.nextInt();
                 System.out.println("\nInsert row is: " + col);
+
             } catch (InputMismatchException e) {
                 System.out.println("\nValori inseriti non validi");
-                break;
             }
-            break;
-        }
-        
-        Move humanMove = new Move(row, col);
-        while (true) {
+            Move humanMove = new Move(row, col);
             if (board.isValidMove(humanMove)) {
-                break;
+                return humanMove;
             } else {
                 System.out.println("\nMossa non valida!");
             }
         }
-        return humanMove;
     }
 }
