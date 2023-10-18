@@ -9,25 +9,16 @@ public class Board {
                 cells[i][j] = ' ';
     }
 
-    public char[][] getCells(){
-        char[][] mat=new char[SIZE][SIZE];
-        for (int i = 0; i < SIZE; i++)
-            for (int j = 0; j < SIZE; j++)
-                mat[i][j] = cells[i][j];
-        return mat;
-    }
-
     public void print() {
         System.out.println("\n|---|---|---|\n");
         for (int i = 0; i < SIZE; i++) {
-            System.out.println("| ");
+            System.out.println("|");
             for (int j = 0; j < SIZE; j++) {
-                System.out.println(cells[i][j]);
-                System.out.println(" | ");
+                System.out.println(" "+cells[i][j]);
+                System.out.println(" |");
             }
-            System.out.println(" |\n");
+            System.out.println("\n|---|---|---|\n");
         }
-        System.out.println("\n|---|---|---|\n");
     }
 
     public boolean isValidMove(Move move) {
@@ -78,6 +69,16 @@ public class Board {
         } else {
             return false;
         }
+    }
 
+    public boolean isWinningMove(Move move, char mark) {
+        makeMove(move, mark);
+        if (checkForWin(mark)) {
+            cells[move.getRow()][move.getCol()] = ' ';
+            return true;
+        } else {
+            cells[move.getRow()][move.getCol()] = ' ';
+            return false;
+        }
     }
 }
