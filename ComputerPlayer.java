@@ -1,7 +1,4 @@
-import java.util.Random;
-
 public class ComputerPlayer extends Player {
-    private static Random random = new Random();
 
     public ComputerPlayer(char mark) {
         super(mark);
@@ -11,6 +8,7 @@ public class ComputerPlayer extends Player {
     public Move makeMove(Board board) {
         Move move;
         char other_player_mark;
+
         if (super.mark == 'x')
             other_player_mark = 'o';
         else
@@ -36,5 +34,7 @@ public class ComputerPlayer extends Player {
                 if (board.isValidMove(move))
                     return move;
             }
+
+        return null;
     }
 }
