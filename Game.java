@@ -12,9 +12,13 @@ public class Game {
     }
 
     public void play() {
-        while (board.checkForWin(currentPlayer.mark) || board.isFull()) {
+        while (!(board.isFull())) {
             board.makeMove(currentPlayer.makeMove(board), currentPlayer.mark);
             board.print();
+            if (board.checkForWin(currentPlayer.mark)) {
+                System.out.println("\nHAI VINTO!");
+                break;
+            }
             if (currentPlayer.mark == player1.mark) {
                 System.out.println("\nTURNO DI PLAYER 2");
                 currentPlayer = player2;

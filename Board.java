@@ -10,14 +10,14 @@ public class Board {
     }
 
     public void print() {
-        System.out.println("\n|---|---|---|\n");
+        System.out.print("\n|---|---|---|\n");
         for (int i = 0; i < SIZE; i++) {
-            System.out.println("|");
+            System.out.print("|");
             for (int j = 0; j < SIZE; j++) {
-                System.out.println(" "+cells[i][j]);
-                System.out.println(" |");
+                System.out.print(" " + cells[i][j]);
+                System.out.print(" |");
             }
-            System.out.println("\n|---|---|---|\n");
+            System.out.print("\n|---|---|---|\n");
         }
     }
 
@@ -25,7 +25,7 @@ public class Board {
         int row = move.getRow();
         int col = move.getCol();
 
-        if ((row <= SIZE && row >= 1) && (col <= SIZE && col >= 1)) {
+        if ((row < SIZE && row >= 0) && (col < SIZE && col >= 0)) {
             if (cells[row][col] == ' ')
                 return true;
             else

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class ComputerPlayer extends Player {
 
     public ComputerPlayer(char mark) {
@@ -6,6 +8,7 @@ public class ComputerPlayer extends Player {
 
     @Override
     public Move makeMove(Board board) {
+        Random rand = new Random();
         Move move;
         char other_player_mark;
 
@@ -28,13 +31,10 @@ public class ComputerPlayer extends Player {
                     return move;
             }
 
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++) {
-                move = new Move(i, j);
-                if (board.isValidMove(move))
-                    return move;
-            }
+        do {
+            move = new Move(rand.nextInt(3), rand.nextInt(3));
+        } while (!board.isValidMove(move));
 
-        return null;
+        return move;
     }
 }

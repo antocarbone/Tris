@@ -1,30 +1,29 @@
 import java.util.Scanner;
 
 public class Tris {
+    private static Scanner scanner = new Scanner(System.in);
 
-    public static void Main(String[] args) {
-        while (playAgain()) {
-            startNewGame();
+    public static void main(String[] args) {
+        while (playAgain(scanner)) {
+            startNewGame(scanner);
         }
         System.out.println("\n\nGRAZIE PER AVER GIOCATO!\nARRIVEDERCI");
         return;
     }
 
-    private static Player generateNewPlayer(char mark) {
-        Scanner scanner = new Scanner(System.in);
+    private static Player generateNewPlayer(char mark, Scanner scanner) {
         Player player;
-        int sel;
+        int s;
+
         while (true) {
-            System.out.println(
-                    "\nInserisci 1 se player è umano altrimenti inserisci 0 se player deve essere il computer: ");
-            sel = scanner.nextInt();
-            if (sel != 0 && sel != 1)
+            System.out.println("\nInserisci 1 (giocatore umano) o 0 (cpu) : ");
+            s = scanner.nextInt();
+            if (s != 0 && s != 1)
                 System.out.println("\nInput non valido!\nRiprova");
             else
                 break;
         }
-        scanner.close();
-        if (sel == 1) {
+        if (s == 1) {
             player = new HumanPlayer(mark);
             return player;
         } else {
@@ -33,12 +32,12 @@ public class Tris {
         }
     }
 
-    private static void startNewGame() {
+    private static void startNewGame(Scanner scanner) {
         System.out.println("\nCREAZIONE PLAYER 1");
-        Player player1 = generateNewPlayer('x');
+        Player player1 = generateNewPlayer('x', scanner);
 
         System.out.println("\nCREAZIONE PLAYER2");
-        Player player2 = generateNewPlayer('o');
+        Player player2 = generateNewPlayer('o', scanner);
 
         Game partita = new Game(player1, player2);
         System.out.println("\nINIZIA IL PLAYER1");
@@ -46,12 +45,10 @@ public class Tris {
         return;
     }
 
-    private static boolean playAgain() {
+    private static boolean playAgain(Scanner scanner) {
         int sel;
         System.out.println("\nIniziare una nuova partita? (1=si/0=no): ");
-        Scanner scanner = new Scanner(System.in);
         sel = scanner.nextInt();
-        scanner.close();
         if (sel == 1) {
             return true;
         } else if (sel == 0) {
