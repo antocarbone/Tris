@@ -1,3 +1,4 @@
+package src;
 public class Board {
     private static int SIZE = 3;
     private char cells[][];
